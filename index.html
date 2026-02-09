@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmax Autos - Premium Cars & Interstate Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #d4af37;
+            --accent: #e63946;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-login:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-signup {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-signup:hover {
+            background-color: #c9a12d;
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            color: var(--primary);
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            background: var(--primary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .cars-section {
+            background-color: #f0f5ff;
+            padding: 4rem 0;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .car-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .car-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .car-details {
+            padding: 1.5rem;
+        }
+        
+        .car-brand {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .car-model {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .car-year {
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+        }
+        
+        .car-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.8rem 0;
+        }
+        
+        .car-color {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .color-swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+        
+        .reviews-section {
+            padding: 4rem 0;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .review-name {
+            font-weight: 600;
+        }
+        
+        .stars {
+            color: gold;
+            margin: 0.5rem 0;
+        }
+        
+        .trust-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .trust-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .trust-content h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            margin: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .delivery-section {
+            padding: 4rem 0;
+        }
+        
+        .delivery-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .delivery-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .delivery-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .credentials-section {
+            padding: 4rem 0;
+            background-color: #f0f5ff;
+        }
+        
+        .credentials-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .form-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background: var(--dark);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .form-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Car Detail Modal */
+        .car-detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .car-detail-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .car-detail-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .car-detail-header h3 {
+            margin: 0;
+        }
+        
+        .close-detail {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .car-detail-body {
+            padding: 1.5rem;
+        }
+        
+        .car-detail-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .car-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .spec-label {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+        
+        .spec-value {
+            font-size: 1.1rem;
+        }
+        
+        .car-description {
+            margin: 1.5rem 0;
+            line-height: 1.7;
+        }
+        
+        .car-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-buy {
+            background: var(--secondary);
+            color: var(--primary);
+            flex: 1;
+        }
+        
+        .btn-compare {
+            background: var(--gray);
+            color: white;
+            flex: 1;
+        }
+        
+        /* Compare Modal */
+        .compare-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1002;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .compare-content {
+            background: white;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .compare-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .compare-header h3 {
+            margin: 0;
+        }
+        
+        .close-compare {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .compare-body {
+            padding: 1.5rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-select {
+            background: var(--secondary);
+            color: var(--primary);
+            flex: 1;
+        }
+        
+        .btn-remove {
+            background: var(--accent);
+            color: white;
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .delivery-info {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .form-col {
+                width: 100%;
+            }
+            
+            .car-specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .car-actions {
+                flex-direction: column;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <h1>Roadmax Autos</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#inventory">Inventory</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#delivery">Delivery</a></li>
+                    <li><a href="#credentials">Credentials</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-login" id="loginBtn">Login</button>
+                <button class="btn btn-signup" id="signupBtn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Premium Cars & Reliable Interstate Delivery</h2>
+            <p>Discover your dream car and enjoy seamless delivery across Nigeria. Trusted by thousands of satisfied customers.</p>
+            <a href="#inventory" class="btn btn-primary" style="background-color: var(--secondary); color: var(--primary); padding: 0.8rem 2rem; font-size: 1.1rem; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 1rem; transition: all 0.3s ease;">Browse Inventory</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Car Sales</h3>
+                    <p>Wide selection of premium vehicles from trusted brands at competitive prices.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Interstate Delivery</h3>
+                    <p>Safe and reliable delivery of your vehicle to any state in Nigeria.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Maintenance</h3>
+                    <p>Comprehensive maintenance services to keep your vehicle in perfect condition.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="service-content">
+                    <h3>VIN Verification</h3>
+                    <p>Complete vehicle history reports and authenticity verification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Inventory Section -->
+    <section id="inventory" class="cars-section">
+        <div class="container">
+            <h2 class="section-title">Vehicle Inventory</h2>
+            <div class="filters">
+                <button class="filter-btn active">All Brands</button>
+                <button class="filter-btn">Toyota</button>
+                <button class="filter-btn">Honda</button>
+                <button class="filter-btn">Mercedes</button>
+                <button class="filter-btn">BMW</button>
+                <button class="filter-btn">Ford</button>
+                <button class="filter-btn">Nissan</button>
+                <button class="filter-btn">Hyundai</button>
+                <button class="filter-btn">Lexus</button>
+            </div>
+            <div class="cars-grid" id="carsContainer">
+                <!-- Cars will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Car Detail Modal -->
+    <div id="carDetailModal" class="car-detail-modal">
+        <div class="car-detail-content">
+            <div class="car-detail-header">
+                <h3 id="detailTitle">Car Details</h3>
+                <button class="close-detail">&times;</button>
+            </div>
+            <div class="car-detail-body">
+                <div class="car-detail-image" id="detailImage"></div>
+                <div class="car-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Brand</span>
+                        <span id="detailBrand">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Model</span>
+                        <span id="detailModel">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Year</span>
+                        <span id="detailYear">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Price</span>
+                        <span id="detailPrice">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Engine</span>
+                        <span id="detailEngine">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Transmission</span>
+                        <span id="detailTransmission">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Fuel Type</span>
+                        <span id="detailFuel">-</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Mileage</span>
+                        <span id="detailMileage">-</span>
+                    </div>
+                </div>
+                <div class="car-description">
+                    <h3>Description</h3>
+                    <p id="detailDescription">Detailed description of the vehicle will appear here.</p>
+                </div>
+                <div class="car-actions">
+                    <button class="btn btn-buy" id="buyNowBtn">Buy Now</button>
+                    <button class="btn btn-compare" id="compareBtn">Compare</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compare Modal -->
+    <div id="compareModal" class="compare-modal">
+        <div class="compare-content">
+            <div class="compare-header">
+                <h3>Compare Cars</h3>
+                <button class="close-compare">&times;</button>
+            </div>
+            <div class="compare-body">
+                <div id="comparisonTableContainer">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th id="compCar1Header">Car 1</th>
+                                <th id="compCar2Header">Car 2</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparisonBody">
+                            <!-- Comparison data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="comparison-actions">
+                    <button class="btn btn-select" id="selectCarBtn">Select This Car</button>
+                    <button class="btn btn-remove" id="removeComparisonBtn">Remove Comparison</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Trust Section -->
+    <section class="trust-section">
+        <div class="container trust-content">
+            <h2>Why Our Customers Trust Us</h2>
+            <p>We have built our reputation on reliability, transparency, and exceptional service since 2010.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">12K+</div>
+                    <div>Happy Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div>Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">36</div>
+                    <div>States Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div>Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section container">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">JD</div>
+                    <div class="review-name">John Doe</div>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Purchased my Toyota Camry from Roadmax Autos. The delivery was prompt and the car was exactly as described. Highly recommend!"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">SA</div>
+                    <div class="review-name">Sarah Adewale</div>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"The interstate delivery service is exceptional. They delivered my Honda Civic to Lagos in just 3 days. Professional and reliable!"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MK</div>
+                    <div class="review-name">Michael Kone</div>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Been a loyal customer for 5 years. The quality of cars and customer service is unmatched. Will continue to recommend Roadmax Autos."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Information Section -->
+    <section id="delivery" class="delivery-section container">
+        <h2 class="section-title">Delivery Information</h2>
+        <div class="delivery-info">
+            <div class="delivery-card">
+                <h3><i class="fas fa-truck"></i> Delivery Methods</h3>
+                <p>We offer two primary delivery methods:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li><strong>Open Trailer Transport:</strong> Cost-effective for standard vehicles</li>
+                    <li><strong>Enclosed Transport:</strong> Secure option for luxury and classic cars</li>
+                </ul>
+            </div>
+            <div class="delivery-card">
+                <h3><i class="far fa-calendar-check"></i> Delivery Timeline</h3>
+                <p>Delivery times vary based on destination:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li><strong>Abuja to Lagos:</strong> 2-3 days</li>
+                    <li><strong>Abuja to Port Harcourt:</strong> 3-4 days</li>
+                    <li><strong>National Coverage:</strong> 3-7 days depending on location</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Form Section -->
+    <section id="credentials" class="credentials-section container">
+        <h2 class="section-title">Customer Information</h2>
+        <div class="credentials-form">
+            <form id="customerForm">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" placeholder="City, State" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact1">Contact Primary (1) *</label>
+                            <input type="tel" id="contact1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nin">National Identification Number (NIN) *</label>
+                            <input type="text" id="nin" maxlength="11" placeholder="11-digit National ID Number" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact2">Contact Secondary (2) (Optional)</label>
+                            <input type="tel" id="contact2">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Full Address *</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryMethod">Delivery Method *</label>
+                            <select id="deliveryMethod" required>
+                                <option value="">Select Delivery Method</option>
+                                <option value="open">Open Trailer Transport</option>
+                                <option value="enclosed">Enclosed Transport</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information</label>
+                    <textarea id="additionalInfo" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Information</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account Access</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="signup">Create Account</button>
+                </div>
+                
+                <div id="loginTab" class="tab-content active">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn-submit">Login</button>
+                    </form>
+                </div>
+                
+                <div id="signupTab" class="tab-content">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupName">Full Name</label>
+                            <input type="text" id="signupName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address</label>
+                            <input type="email" id="signupEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPhone">Phone Number</label>
+                            <input type="tel" id="signupPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn-submit">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Roadmax Autos</h3>
+                    <p>Your trusted partner for premium vehicles and reliable interstate delivery services across Nigeria.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#inventory">Inventory</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#delivery">Delivery</a></li>
+                        <li><a href="#credentials">Credentials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> No 34 Ajayi Crescent, Opposite Grandline Hotel, Abuja</p>
+                        <p><i class="fas fa-phone"></i> +234 800 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@roadmaxautos.com</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Roadmax Autos. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample car data with 30+ cars with unique images
+        const carData = [
+            { id: 1, brand: "Toyota", model: "Camry", year: 2024, price: "₦ 12,500,000", color: "#333", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "Automatic", fuel: "Petrol", mileage: "15,000 km", description: "Reliable sedan with excellent fuel efficiency and spacious interior. Perfect for family use." },
+            { id: 2, brand: "Honda", model: "Accord", year: 2023, price: "₦ 11,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "1.5L Turbo", transmission: "CVT", fuel: "Petrol", mileage: "12,000 km", description: "Premium sedan with advanced safety features and comfortable ride quality." },
+            { id: 3, brand: "Mercedes-Benz", model: "C-Class", year: 2025, price: "₦ 25,000,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "5,000 km", description: "Luxury executive car with premium materials and cutting-edge technology." },
+            { id: 4, brand: "Ford", model: "Explorer", year: 2022, price: "₦ 18,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.0L V6 EcoBoost", transmission: "10-Speed Automatic", fuel: "Petrol", mileage: "20,000 km", description: "Versatile SUV with three rows of seating and powerful performance." },
+            { id: 5, brand: "BMW", model: "X5", year: 2024, price: "₦ 22,000,000", color: "#000", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.0L I6 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "8,000 km", description: "Luxury SUV with exceptional driving dynamics and premium interior." },
+            { id: 6, brand: "Lexus", model: "RX 350", year: 2023, price: "₦ 19,500,000", color: "#fff", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.5L V6", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "10,000 km", description: "Refined luxury SUV with excellent build quality and comfort." },
+            { id: 7, brand: "Nissan", model: "Altima", year: 2022, price: "₦ 9,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "CVT", fuel: "Petrol", mileage: "18,000 km", description: "Economical sedan with modern styling and efficient performance." },
+            { id: 8, brand: "Hyundai", model: "Santa Fe", year: 2024, price: "₦ 15,200,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "6,000 km", description: "Family-friendly SUV with spacious interior and advanced safety features." },
+            { id: 9, brand: "Audi", model: "A4", year: 2023, price: "₦ 20,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "7-Speed Automatic", fuel: "Petrol", mileage: "9,000 km", description: "Premium sedan with quattro all-wheel drive and sophisticated interior." },
+            { id: 10, brand: "Volkswagen", model: "Passat", year: 2022, price: "₦ 13,700,000", color: "#333", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "6-Speed Manual", fuel: "Petrol", mileage: "16,000 km", description: "Comfortable midsize sedan with German engineering and reliability." },
+            { id: 11, brand: "Chevrolet", model: "Equinox", year: 2024, price: "₦ 16,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "1.5L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "7,000 km", description: "Compact SUV with efficient powertrain and versatile cargo space." },
+            { id: 12, brand: "Jeep", model: "Cherokee", year: 2023, price: "₦ 17,200,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "11,000 km", description: "Off-road capable SUV with Trailhawk trim for adventurous drivers." },
+            { id: 13, brand: "Subaru", model: "Outback", year: 2022, price: "₦ 15,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L Boxer", transmission: "CVT", fuel: "Petrol", mileage: "14,000 km", description: "Wagon with all-wheel drive capability and generous cargo space." },
+            { id: 14, brand: "Mazda", model: "CX-5", year: 2024, price: "₦ 14,900,000", color: "#e63946", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "6-Speed Automatic", fuel: "Petrol", mileage: "5,500 km", description: "Stylish SUV with SkyActiv technology and refined driving experience." },
+            { id: 15, brand: "Kia", model: "Sorento", year: 2023, price: "₦ 16,800,000", color: "#333", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.3L V6", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "10,500 km", description: "Three-row SUV with family-friendly features and modern tech." },
+            { id: 16, brand: "Volvo", model: "XC60", year: 2024, price: "₦ 23,500,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo Hybrid", transmission: "8-Speed Automatic", fuel: "Petrol/Electric", mileage: "4,000 km", description: "Luxury SUV with Swedish craftsmanship and advanced safety systems." },
+            { id: 17, brand: "Tesla", model: "Model Y", year: 2024, price: "₦ 28,000,000", color: "#fff", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "Electric Motor", transmission: "Single Speed", fuel: "Electric", mileage: "25,000 km", description: "Electric SUV with long range and over-the-air updates." },
+            { id: 18, brand: "Porsche", model: "Macan", year: 2023, price: "₦ 26,800,000", color: "#e63946", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "7-Speed Automatic", fuel: "Petrol", mileage: "12,000 km", description: "Sporty SUV with Porsche handling and premium build quality." },
+            { id: 19, brand: "Land Rover", model: "Range Rover Evoque", year: 2022, price: "₦ 24,500,000", color: "#333", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "15,000 km", description: "Premium SUV with distinctive styling and off-road capability." },
+            { id: 20, brand: "Jaguar", model: "F-Pace", year: 2023, price: "₦ 27,200,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "9,500 km", description: "Luxury SUV with Jaguar performance and elegant design." },
+            { id: 21, brand: "Infiniti", model: "QX50", year: 2024, price: "₦ 19,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L VC-Turbo", transmission: "CVT", fuel: "Petrol", mileage: "6,500 km", description: "Luxury SUV with variable compression engine technology." },
+            { id: 22, brand: "Genesis", model: "GV70", year: 2023, price: "₦ 21,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "8,500 km", description: "Premium SUV with Genesis luxury and performance." },
+            { id: 23, brand: "Lincoln", model: "Nautilus", year: 2022, price: "₦ 20,500,000", color: "#333", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.7L V6 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "13,000 km", description: "Luxury SUV with refined ride and quiet cabin." },
+            { id: 24, brand: "Cadillac", model: "XT5", year: 2023, price: "₦ 22,800,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.6L V6", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "11,500 km", description: "Luxury SUV with American craftsmanship and advanced tech." },
+            { id: 25, brand: "Buick", model: "Envision", year: 2024, price: "₦ 18,200,000", color: "#fff", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "7,200 km", description: "Midsize SUV with Buick luxury and modern amenities." },
+            { id: 26, brand: "Acura", model: "MDX", year: 2022, price: "₦ 19,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.5L V6", transmission: "10-Speed Automatic", fuel: "Petrol", mileage: "16,500 km", description: "Luxury SUV with Super Handling All-Wheel Drive." },
+            { id: 27, brand: "Alfa Romeo", model: "Stelvio", year: 2023, price: "₦ 25,800,000", color: "#333", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "10,200 km", description: "Italian SUV with sporty handling and elegant design." },
+            { id: 28, brand: "Maserati", model: "Levante", year: 2024, price: "₦ 32,000,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.0L V6 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "5,800 km", description: "Luxury SUV with Maserati performance and Italian styling." },
+            { id: 29, brand: "Bentley", model: "Bentayga", year: 2023, price: "₦ 120,000,000", color: "#fff", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "4.0L W12 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "3,000 km", description: "Ultra-luxury SUV with handcrafted interior and powerful engine." },
+            { id: 30, brand: "Rolls-Royce", model: "Cullinan", year: 2024, price: "₦ 180,000,000", color: "#333", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "6.75L V12 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "2,000 km", description: "Ultimate luxury SUV with unparalleled comfort and craftsmanship." },
+            { id: 31, brand: "Lamborghini", model: "Urus", year: 2023, price: "₦ 150,000,000", color: "#e63946", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "4.0L V8 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "4,500 km", description: "Super SUV with Lamborghini performance and luxury." },
+            { id: 32, brand: "Ferrari", model: "Purosangue", year: 2024, price: "₦ 200,000,000", color: "#fff", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "6.5L V12", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "1,000 km", description: "First Ferrari SUV with track-level performance." }
+        ];
+
+        // Global variables for comparison
+        let comparedCars = [];
+        let selectedCarForComparison = null;
+
+        // Function to generate car cards
+        function generateCarCards(cars) {
+            const container = document.getElementById('carsContainer');
+            container.innerHTML = '';
+            
+            cars.forEach(car => {
+                const carCard = document.createElement('div');
+                carCard.className = 'car-card';
+                carCard.innerHTML = `
+                    <div class="car-image" style="background-image: url('${car.image}')"></div>
+                    <div class="car-details">
+                        <div class="car-brand">${car.brand} ${car.model}</div>
+                        <div class="car-model">${car.model}</div>
+                        <div class="car-year">Year: ${car.year}</div>
+                        <div class="car-price">${car.price}</div>
+                        <div class="car-color">
+                            <span>Color:</span>
+                            <div class="color-swatch" style="background-color: ${car.color};"></div>
+                            <span>${car.color === '#333' ? 'Black' : car.color === '#fff' ? 'White' : car.color === '#1a3a5f' ? 'Silver' : car.color === '#e63946' ? 'Red' : 'Other'}</span>
+                        </div>
+                        <button class="btn btn-primary view-details" data-id="${car.id}" style="background-color: var(--secondary); color: var(--primary); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; width: 100%;">View Details</button>
+                    </div>
+                `;
+                container.appendChild(carCard);
+            });
+            
+            // Add event listeners to view details buttons
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    const carId = parseInt(this.getAttribute('data-id'));
+                    showCarDetails(carId);
+                });
+            });
+        }
+
+        // Function to show car details in modal
+        function showCarDetails(carId) {
+            const car = carData.find(c => c.id === carId);
+            if (!car) return;
+            
+            document.getElementById('detailTitle').textContent = `${car.brand} ${car.model}`;
+            document.getElementById('detailImage').style.backgroundImage = `url('${car.image}')`;
+            document.getElementById('detailBrand').textContent = car.brand;
+            document.getElementById('detailModel').textContent = car.model;
+            document.getElementById('detailYear').textContent = car.year;
+            document.getElementById('detailPrice').textContent = car.price;
+            document.getElementById('detailEngine').textContent = car.engine;
+            document.getElementById('detailTransmission').textContent = car.transmission;
+            document.getElementById('detailFuel').textContent = car.fuel;
+            document.getElementById('detailMileage').textContent = car.mileage;
+            document.getElementById('detailDescription').textContent = car.description;
+            
+            // Store the selected car for the Buy Now button
+            document.getElementById('buyNowBtn').dataset.carId = carId;
+            
+            document.getElementById('carDetailModal').style.display = 'flex';
+        }
+
+        // Function to handle comparison
+        function handleCompare(carId) {
+            const car = carData.find(c => c.id === carId);
+            if (!car) return;
+            
+            // If we already have one car for comparison, add this one
+            if (comparedCars.length === 0) {
+                comparedCars.push(car);
+                alert(`"${car.brand} ${car.model}" added to comparison`);
+            } else if (comparedCars.length === 1) {
+                comparedCars.push(car);
+                
+                // Display the comparison table
+                displayComparison();
+                
+                // Show the comparison modal
+                document.getElementById('compareModal').style.display = 'flex';
+            } else {
+                // If we already have two cars, replace the second one
+                comparedCars[1] = car;
+                displayComparison();
+            }
+        }
+
+        // Function to display comparison table
+        function displayComparison() {
+            if (comparedCars.length !== 2) return;
+            
+            const car1 = comparedCars[0];
+            const car2 = comparedCars[1];
+            
+            document.getElementById('compCar1Header').textContent = `${car1.brand} ${car1.model}`;
+            document.getElementById('compCar2Header').textContent = `${car2.brand} ${car2.model}`;
+            
+            const comparisonBody = document.getElementById('comparisonBody');
+            comparisonBody.innerHTML = '';
+            
+            // Create comparison rows
+            const features = ['Brand', 'Model', 'Year', 'Price', 'Engine', 'Transmission', 'Fuel Type', 'Mileage'];
+            const values = [
+                [car1.brand, car2.brand],
+                [car1.model, car2.model],
+                [car1.year, car2.year],
+                [car1.price, car2.price],
+                [car1.engine, car2.engine],
+                [car1.transmission, car2.transmission],
+                [car1.fuel, car2.fuel],
+                [car1.mileage, car2.mileage]
+            ];
+            
+            features.forEach((feature, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${feature}</strong></td>
+                    <td>${values[index][0]}</td>
+                    <td>${values[index][1]}</td>
+                `;
+                comparisonBody.appendChild(row);
+            });
+        }
+
+        // Function to select a car after comparison
+        function selectCarForPurchase(carIndex) {
+            const selectedCar = comparedCars[carIndex];
+            if (selectedCar) {
+                // Redirect to credentials form with selected car data
+                sessionStorage.setItem('selectedCar', JSON.stringify(selectedCar));
+                window.location.href = '#credentials';
+                document.getElementById('compareModal').style.display = 'none';
+                
+                // Scroll to credentials section
+                document.getElementById('credentials').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize the page with all cars
+        generateCarCards(carData);
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.textContent.trim();
+                
+                if (filter === 'All Brands') {
+                    generateCarCards(carData);
+                } else {
+                    const filteredCars = carData.filter(car => car.brand === filter);
+                    generateCarCards(filteredCars);
+                }
+            });
+        });
+
+        // Event listener for Buy Now button
+        document.getElementById('buyNowBtn').addEventListener('click', function() {
+            const carId = parseInt(this.dataset.carId);
+            const car = carData.find(c => c.id === carId);
+            
+            if (car) {
+                // Store the selected car in session storage
+                sessionStorage.setItem('selectedCar', JSON.stringify(car));
+                
+                // Scroll to credentials form
+                document.getElementById('credentials').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Event listener for Compare button
+        document.getElementById('compareBtn').addEventListener('click', function() {
+            const carId = parseInt(document.getElementById('buyNowBtn').dataset.carId);
+            handleCompare(carId);
+            document.getElementById('carDetailModal').style.display = 'none';
+        });
+
+        // Event listener for Select This Car button in comparison
+        document.getElementById('selectCarBtn').addEventListener('click', function() {
+            // Select the first car by default
+            selectCarForPurchase(0);
+        });
+
+        // Event listener for Remove Comparison button
+        document.getElementById('removeComparisonBtn').addEventListener('click', function() {
+            comparedCars = [];
+            document.getElementById('compareModal').style.display = 'none';
+        });
+
+        // Modal functionality
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const modal = document.getElementById('authModal');
+        const closeModal = document.querySelector('.close-modal');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabs = document.querySelectorAll('.tab-content');
+        const closeDetailBtn = document.querySelector('.close-detail');
+        const closeCompareBtn = document.querySelector('.close-compare');
+
+        loginBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        closeDetailBtn.addEventListener('click', () => {
+            document.getElementById('carDetailModal').style.display = 'none';
+        });
+
+        closeCompareBtn.addEventListener('click', () => {
+            document.getElementById('compareModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+            if (e.target === document.getElementById('carDetailModal')) {
+                document.getElementById('carDetailModal').style.display = 'none';
+            }
+            if (e.target === document.getElementById('compareModal')) {
+                document.getElementById('compareModal').style.display = 'none';
+            }
+        });
+
+        // Tab switching
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and buttons
+                tabs.forEach(tab => tab.classList.remove('active'));
+                tabBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked tab and button
+                document.getElementById(`${tabId}Tab`).classList.add('active');
+                btn.classList.add('active');
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('customerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const fullName = document.getElementById('fullName').value;
+            const location = document.getElementById('location').value;
+            const contact1 = document.getElementById('contact1').value;
+            const nin = document.getElementById('nin').value;
+            const address = document.getElementById('address').value;
+            const deliveryMethod = document.getElementById('deliveryMethod').value;
+            
+            if (!fullName || !location || !contact1 || !nin || !address || !deliveryMethod) {
+                alert('Please fill in all required fields marked with *');
+                return;
+            }
+            
+            // Validate NIN format (11 digits)
+            if (!/^\d{11}$/.test(nin)) {
+                alert('NIN must be 11 digits');
+                return;
+            }
+            
+            // Validate phone numbers
+            if (!/^\d{10,15}$/.test(contact1.replace(/\D/g, ''))) {
+                alert('Please enter a valid phone number for Contact 1');
+                return;
+            }
+            
+            if (document.getElementById('contact2').value && 
+                !/^\d{10,15}$/.test(document.getElementById('contact2').value.replace(/\D/g, ''))) {
+                alert('Please enter a valid phone number for Contact 2');
+                return;
+            }
+            
+            // Show success message
+            alert('Thank you! Your information has been submitted successfully. We will contact you shortly to finalize your purchase.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality would be implemented in a real application.');
+            modal.style.display = 'none';
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Account created successfully! You can now log in.');
+            modal.style.display = 'none';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
