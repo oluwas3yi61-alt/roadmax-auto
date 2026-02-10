@@ -1306,58 +1306,90 @@
         </div>
     </footer>
 
-   <script>
+<script>
 // ================== CAR DATABASE (UNCHANGED IMAGE SOURCES) ==================
-       const cars = [<script>
 const cars = [
-  {
-    brand:"Audi", model:"A4", year:2021, price:27000000, color:"Black",
-    img:"https://upload.wikimedia.org/wikipedia/commons/9/9e/2019_Audi_A4_Sport_40_TDi_S-A.jpg",
-    engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"15,000km",
-    description:"Luxury compact sedan with premium comfort and performance."
-  },
-  {
-    brand:"Audi", model:"Q7", year:2022, price:45000000, color:"White",
-    img:"https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_Automatic_3.0.jpg",
-    engine:"3.0L V6", transmission:"Automatic", fuel:"Petrol", mileage:"10,000km",
-    description:"Spacious luxury SUV with advanced technology."
-  },
-  {
-    brand:"Volkswagen", model:"Tiguan", year:2021, price:23500000, color:"Blue",
-    img:"https://upload.wikimedia.org/wikipedia/commons/4/4f/2018_Volkswagen_Tiguan_SE_TDi_4Motion_S-A_2.0.jpg",
-    engine:"2.0L", transmission:"Automatic", fuel:"Petrol", mileage:"18,000km",
-    description:"Compact SUV with comfort and efficiency."
-  },
-  {
-    brand:"Volkswagen", model:"Passat", year:2020, price:19500000, color:"Silver",
-    img:"https://upload.wikimedia.org/wikipedia/commons/1/1e/VW_Passat_B8.jpg",
-    engine:"2.0L", transmission:"Automatic", fuel:"Petrol", mileage:"22,000km",
-    description:"Reliable executive sedan."
-  },
-  {
-    brand:"Lexus", model:"ES 350", year:2021, price:26500000, color:"White",
-    img:"https://upload.wikimedia.org/wikipedia/commons/6/6f/2019_Lexus_ES_350.jpg",
-    engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"13,000km",
-    description:"Smooth luxury sedan with refined interior."
-  },
-  {
-    brand:"Mercedes Benz", model:"C300", year:2021, price:32000000, color:"White",
-    img:"https://upload.wikimedia.org/wikipedia/commons/3/3e/2019_Mercedes-Benz_C300.jpg",
-    engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"14,000km",
-    description:"Premium sedan with modern design."
-  },
-  {
-    brand:"BMW", model:"X5", year:2021, price:35000000, color:"Blue",
-    img:"https://upload.wikimedia.org/wikipedia/commons/5/5b/2019_BMW_X5.jpg",
-    engine:"3.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"18,000km",
-    description:"Luxury SUV with sporty performance."
-  },
-  {
-    brand:"Tesla", model:"Model S", year:2022, price:80000000, color:"Black",
-    img:"https://upload.wikimedia.org/wikipedia/commons/5/56/Tesla_Model_S.jpg",
-    engine:"Electric", transmission:"Automatic", fuel:"Electric", mileage:"6,000km",
-    description:"High-performance electric luxury sedan."
-  }
+
+  { brand:"Audi", model:"A4", year:2021, price:27000000, color:"Black",
+    img:"https://source.unsplash.com/400x250/?audi-a4", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"15,000km",
+    description:"Luxury compact sedan with premium comfort and performance." },
+
+  { brand:"Audi", model:"Q7", year:2022, price:45000000, color:"White",
+    img:"https://source.unsplash.com/400x250/?audi-q7", engine:"3.0L V6", transmission:"Automatic", fuel:"Petrol", mileage:"10,000km",
+    description:"Spacious 7-seater SUV with advanced tech and smooth ride." },
+
+  { brand:"BMW", model:"X5", year:2021, price:35000000, color:"Blue",
+    img:"https://upload.wikimedia.org/wikipedia/commons/5/5b/2019_BMW_X5.jpg", engine:"3.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"18,000km",
+    description:"Executive SUV combining luxury and sporty performance." },
+
+  { brand:"Mercedes Benz", model:"C300", year:2021, price:32000000, color:"White",
+    img:"https://upload.wikimedia.org/wikipedia/commons/3/3e/2019_Mercedes-Benz_C300.jpg", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"14,000km",
+    description:"Premium sedan with elegant design and advanced features." },
+
+  { brand:"Toyota", model:"Camry", year:2020, price:18000000, color:"Black",
+    img:"https://source.unsplash.com/400x250/?toyota-camry", engine:"2.5L", transmission:"Automatic", fuel:"Petrol", mileage:"25,000km",
+    description:"Reliable family sedan known for durability and comfort." },
+
+  { brand:"Lexus", model:"RX 350", year:2022, price:28000000, color:"Gray",
+    img:"https://source.unsplash.com/400x250/?lexus-rx350", engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"9,000km",
+    description:"Luxury crossover SUV with refined interior and smooth ride." },
+
+  { brand:"Honda", model:"CR-V", year:2022, price:21000000, color:"Red",
+    img:"https://upload.wikimedia.org/wikipedia/commons/0/0c/2020_Honda_CR-V.jpg", engine:"2.4L", transmission:"Automatic", fuel:"Petrol", mileage:"12,000km",
+    description:"Efficient compact SUV perfect for city and highway driving." },
+
+  { brand:"Range Rover", model:"Evoque", year:2022, price:42000000, color:"Silver",
+    img:"https://upload.wikimedia.org/wikipedia/commons/2/24/Range_Rover_Evoque_2020.jpg", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"8,000km",
+    description:"Stylish compact SUV with off-road capability and luxury." },
+
+  { brand:"Toyota", model:"Corolla", year:2021, price:14200000, color:"White",
+    img:"https://source.unsplash.com/400x250/?toyota-corolla", engine:"1.8L", transmission:"Automatic", fuel:"Petrol", mileage:"21,000km",
+    description:"Durable compact sedan ideal for everyday use." },
+
+  { brand:"Toyota", model:"Highlander", year:2022, price:29000000, color:"Silver",
+    img:"https://source.unsplash.com/400x250/?toyota-highlander", engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"10,000km",
+    description:"Spacious SUV built for comfort and long trips." },
+
+  { brand:"BMW", model:"530i", year:2020, price:30000000, color:"Black",
+    img:"https://source.unsplash.com/400x250/?bmw-530i", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"20,000km",
+    description:"Sporty executive sedan with premium features." },
+
+  { brand:"Peugeot", model:"3008", year:2021, price:17000000, color:"Gray",
+    img:"https://source.unsplash.com/400x250/?peugeot-3008", engine:"1.6L", transmission:"Automatic", fuel:"Petrol", mileage:"19,000km",
+    description:"Modern crossover SUV with bold design." },
+
+  { brand:"Mazda", model:"CX-5", year:2022, price:20500000, color:"Red",
+    img:"https://source.unsplash.com/400x250/?mazda-cx5", engine:"2.5L", transmission:"Automatic", fuel:"Petrol", mileage:"13,000km",
+    description:"Sporty compact SUV with smooth handling." },
+
+  { brand:"Nissan", model:"Altima", year:2020, price:16800000, color:"Brown",
+    img:"https://source.unsplash.com/400x250/?nissan-altima", engine:"2.5L", transmission:"Automatic", fuel:"Petrol", mileage:"26,000km",
+    description:"Comfortable and fuel-efficient sedan." },
+
+  { brand:"Hyundai", model:"Tucson", year:2022, price:19000000, color:"White",
+    img:"https://source.unsplash.com/400x250/?hyundai-tucson", engine:"2.0L", transmission:"Automatic", fuel:"Petrol", mileage:"12,000km",
+    description:"Modern compact SUV with advanced tech." },
+
+  { brand:"Kia", model:"Sportage", year:2021, price:17500000, color:"Black",
+    img:"https://source.unsplash.com/400x250/?kia-sportage", engine:"2.0L", transmission:"Automatic", fuel:"Petrol", mileage:"19,000km",
+    description:"Stylish crossover perfect for families." },
+
+  { brand:"Ford", model:"Explorer", year:2020, price:22000000, color:"Red",
+    img:"https://source.unsplash.com/400x250/?ford-explorer", engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"27,000km",
+    description:"Strong and reliable family SUV." },
+
+  { brand:"Jeep", model:"Wrangler", year:2022, price:39000000, color:"Green",
+    img:"https://source.unsplash.com/400x250/?jeep-wrangler", engine:"3.6L V6", transmission:"Automatic", fuel:"Petrol", mileage:"11,000km",
+    description:"Legendary off-road SUV built for adventure." },
+
+  { brand:"Porsche", model:"911 Carrera", year:2023, price:90000000, color:"Silver",
+    img:"https://source.unsplash.com/400x250/?porsche-911", engine:"3.0L Twin Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"5,000km",
+    description:"Iconic sports car delivering thrilling performance." },
+
+  { brand:"Tesla", model:"Model S", year:2022, price:80000000, color:"Black",
+    img:"https://source.unsplash.com/400x250/?tesla-model-s", engine:"Electric", transmission:"Automatic", fuel:"Electric", mileage:"6,000km",
+    description:"Premium electric sedan with futuristic technology." }
+
 ];
 </script>
 
