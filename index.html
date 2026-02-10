@@ -1307,40 +1307,59 @@
     </footer>
 
     <script>
-        // Sample car data with 30+ cars with unique images
-        const carData = [
-            { id: 1, brand: "Toyota", model: "Camry", year: 2024, price: "₦ 12,500,000", color: "#333", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "Automatic", fuel: "Petrol", mileage: "15,000 km", description: "Reliable sedan with excellent fuel efficiency and spacious interior. Perfect for family use." },
-            { id: 2, brand: "Honda", model: "Accord", year: 2023, price: "₦ 11,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "1.5L Turbo", transmission: "CVT", fuel: "Petrol", mileage: "12,000 km", description: "Premium sedan with advanced safety features and comfortable ride quality." },
-            { id: 3, brand: "Mercedes-Benz", model: "C-Class", year: 2025, price: "₦ 25,000,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "5,000 km", description: "Luxury executive car with premium materials and cutting-edge technology." },
-            { id: 4, brand: "Ford", model: "Explorer", year: 2022, price: "₦ 18,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.0L V6 EcoBoost", transmission: "10-Speed Automatic", fuel: "Petrol", mileage: "20,000 km", description: "Versatile SUV with three rows of seating and powerful performance." },
-            { id: 5, brand: "BMW", model: "X5", year: 2024, price: "₦ 22,000,000", color: "#000", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.0L I6 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "8,000 km", description: "Luxury SUV with exceptional driving dynamics and premium interior." },
-            { id: 6, brand: "Lexus", model: "RX 350", year: 2023, price: "₦ 19,500,000", color: "#fff", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.5L V6", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "10,000 km", description: "Refined luxury SUV with excellent build quality and comfort." },
-            { id: 7, brand: "Nissan", model: "Altima", year: 2022, price: "₦ 9,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "CVT", fuel: "Petrol", mileage: "18,000 km", description: "Economical sedan with modern styling and efficient performance." },
-            { id: 8, brand: "Hyundai", model: "Santa Fe", year: 2024, price: "₦ 15,200,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "6,000 km", description: "Family-friendly SUV with spacious interior and advanced safety features." },
-            { id: 9, brand: "Audi", model: "A4", year: 2023, price: "₦ 20,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "7-Speed Automatic", fuel: "Petrol", mileage: "9,000 km", description: "Premium sedan with quattro all-wheel drive and sophisticated interior." },
-            { id: 10, brand: "Volkswagen", model: "Passat", year: 2022, price: "₦ 13,700,000", color: "#333", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "6-Speed Manual", fuel: "Petrol", mileage: "16,000 km", description: "Comfortable midsize sedan with German engineering and reliability." },
-            { id: 11, brand: "Chevrolet", model: "Equinox", year: 2024, price: "₦ 16,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "1.5L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "7,000 km", description: "Compact SUV with efficient powertrain and versatile cargo space." },
-            { id: 12, brand: "Jeep", model: "Cherokee", year: 2023, price: "₦ 17,200,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "11,000 km", description: "Off-road capable SUV with Trailhawk trim for adventurous drivers." },
-            { id: 13, brand: "Subaru", model: "Outback", year: 2022, price: "₦ 15,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L Boxer", transmission: "CVT", fuel: "Petrol", mileage: "14,000 km", description: "Wagon with all-wheel drive capability and generous cargo space." },
-            { id: 14, brand: "Mazda", model: "CX-5", year: 2024, price: "₦ 14,900,000", color: "#e63946", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L 4-Cylinder", transmission: "6-Speed Automatic", fuel: "Petrol", mileage: "5,500 km", description: "Stylish SUV with SkyActiv technology and refined driving experience." },
-            { id: 15, brand: "Kia", model: "Sorento", year: 2023, price: "₦ 16,800,000", color: "#333", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.3L V6", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "10,500 km", description: "Three-row SUV with family-friendly features and modern tech." },
-            { id: 16, brand: "Volvo", model: "XC60", year: 2024, price: "₦ 23,500,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo Hybrid", transmission: "8-Speed Automatic", fuel: "Petrol/Electric", mileage: "4,000 km", description: "Luxury SUV with Swedish craftsmanship and advanced safety systems." },
-            { id: 17, brand: "Tesla", model: "Model Y", year: 2024, price: "₦ 28,000,000", color: "#fff", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "Electric Motor", transmission: "Single Speed", fuel: "Electric", mileage: "25,000 km", description: "Electric SUV with long range and over-the-air updates." },
-            { id: 18, brand: "Porsche", model: "Macan", year: 2023, price: "₦ 26,800,000", color: "#e63946", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "7-Speed Automatic", fuel: "Petrol", mileage: "12,000 km", description: "Sporty SUV with Porsche handling and premium build quality." },
-            { id: 19, brand: "Land Rover", model: "Range Rover Evoque", year: 2022, price: "₦ 24,500,000", color: "#333", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "15,000 km", description: "Premium SUV with distinctive styling and off-road capability." },
-            { id: 20, brand: "Jaguar", model: "F-Pace", year: 2023, price: "₦ 27,200,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "9,500 km", description: "Luxury SUV with Jaguar performance and elegant design." },
-            { id: 21, brand: "Infiniti", model: "QX50", year: 2024, price: "₦ 19,800,000", color: "#fff", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L VC-Turbo", transmission: "CVT", fuel: "Petrol", mileage: "6,500 km", description: "Luxury SUV with variable compression engine technology." },
-            { id: 22, brand: "Genesis", model: "GV70", year: 2023, price: "₦ 21,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.5L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "8,500 km", description: "Premium SUV with Genesis luxury and performance." },
-            { id: 23, brand: "Lincoln", model: "Nautilus", year: 2022, price: "₦ 20,500,000", color: "#333", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.7L V6 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "13,000 km", description: "Luxury SUV with refined ride and quiet cabin." },
-            { id: 24, brand: "Cadillac", model: "XT5", year: 2023, price: "₦ 22,800,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.6L V6", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "11,500 km", description: "Luxury SUV with American craftsmanship and advanced tech." },
-            { id: 25, brand: "Buick", model: "Envision", year: 2024, price: "₦ 18,200,000", color: "#fff", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "9-Speed Automatic", fuel: "Petrol", mileage: "7,200 km", description: "Midsize SUV with Buick luxury and modern amenities." },
-            { id: 26, brand: "Acura", model: "MDX", year: 2022, price: "₦ 19,500,000", color: "#e63946", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.5L V6", transmission: "10-Speed Automatic", fuel: "Petrol", mileage: "16,500 km", description: "Luxury SUV with Super Handling All-Wheel Drive." },
-            { id: 27, brand: "Alfa Romeo", model: "Stelvio", year: 2023, price: "₦ 25,800,000", color: "#333", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "2.0L Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "10,200 km", description: "Italian SUV with sporty handling and elegant design." },
-            { id: 28, brand: "Maserati", model: "Levante", year: 2024, price: "₦ 32,000,000", color: "#1a3a5f", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "3.0L V6 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "5,800 km", description: "Luxury SUV with Maserati performance and Italian styling." },
-            { id: 29, brand: "Bentley", model: "Bentayga", year: 2023, price: "₦ 120,000,000", color: "#fff", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "4.0L W12 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "3,000 km", description: "Ultra-luxury SUV with handcrafted interior and powerful engine." },
-            { id: 30, brand: "Rolls-Royce", model: "Cullinan", year: 2024, price: "₦ 180,000,000", color: "#333", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "6.75L V12 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "2,000 km", description: "Ultimate luxury SUV with unparalleled comfort and craftsmanship." },
-            { id: 31, brand: "Lamborghini", model: "Urus", year: 2023, price: "₦ 150,000,000", color: "#e63946", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "4.0L V8 Turbo", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "4,500 km", description: "Super SUV with Lamborghini performance and luxury." },
-            { id: 32, brand: "Ferrari", model: "Purosangue", year: 2024, price: "₦ 200,000,000", color: "#fff", image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", engine: "6.5L V12", transmission: "8-Speed Automatic", fuel: "Petrol", mileage: "1,000 km", description: "First Ferrari SUV with track-level performance." }
+        // Car inventory data
+        const cars = [
+          { brand: "Audi", model: "A4", year: 2021, price: 27000000, color: "Black", img: "https://source.unsplash.com/400x250/?audi-a4" },
+          { brand: "Audi", model: "Q7", year: 2022, price: 45000000, color: "White", img: "https://source.unsplash.com/400x250/?audi-q7" },
+          { brand: "Volkswagen", model: "Tiguan", year: 2021, price: 23500000, color: "Blue", img: "https://source.unsplash.com/400x250/?volkswagen-tiguan" },
+          { brand: "Volkswagen", model: "Passat", year: 2020, price: 19500000, color: "Silver", img: "https://source.unsplash.com/400x250/?volkswagen-passat" },
+          { brand: "Chevrolet", model: "Malibu", year: 2021, price: 18900000, color: "Red", img: "https://source.unsplash.com/400x250/?chevrolet-malibu" },
+          { brand: "Chevrolet", model: "Tahoe", year: 2022, price: 41000000, color: "Black", img: "https://source.unsplash.com/400x250/?chevrolet-tahoe" },
+          { brand: "Peugeot", model: "3008", year: 2021, price: 17000000, color: "Gray", img: "https://source.unsplash.com/400x250/?peugeot-3008" },
+          { brand: "Peugeot", model: "508", year: 2020, price: 15800000, color: "White", img: "https://source.unsplash.com/400x250/?peugeot-508" },
+          { brand: "Jeep", model: "Wrangler", year: 2022, price: 39000000, color: "Green", img: "https://source.unsplash.com/400x250/?jeep-wrangler" },
+          { brand: "Jeep", model: "Grand Cherokee", year: 2021, price: 36500000, color: "Black", img: "https://source.unsplash.com/400x250/?jeep-grand-cherokee" },
+          { brand: "Mazda", model: "CX-5", year: 2022, price: 20500000, color: "Red", img: "https://source.unsplash.com/400x250/?mazda-cx5" },
+          { brand: "Mazda", model: "6", year: 2020, price: 17200000, color: "Silver", img: "https://source.unsplash.com/400x250/?mazda-6" },
+          { brand: "Subaru", model: "Forester", year: 2021, price: 19900000, color: "White", img: "https://source.unsplash.com/400x250/?subaru-forester" },
+          { brand: "Subaru", model: "Outback", year: 2022, price: 22800000, color: "Blue", img: "https://source.unsplash.com/400x250/?subaru-outback" },
+          { brand: "Toyota", model: "Corolla", year: 2021, price: 14200000, color: "White", img: "https://source.unsplash.com/400x250/?toyota-corolla" },
+          { brand: "Toyota", model: "Camry", year: 2020, price: 18000000, color: "Black", img: "https://source.unsplash.com/400x250/?toyota-camry" },
+          { brand: "Toyota", model: "Highlander", year: 2022, price: 29000000, color: "Silver", img: "https://source.unsplash.com/400x250/?toyota-highlander" },
+          { brand: "Lexus", model: "RX 350", year: 2022, price: 28000000, color: "Gray", img: "https://source.unsplash.com/400x250/?lexus-rx350" },
+          { brand: "Lexus", model: "ES 350", year: 2021, price: 26500000, color: "White", img: "https://source.unsplash.com/400x250/?lexus-es350" },
+          { brand: "Mercedes Benz", model: "C300", year: 2021, price: 32000000, color: "White", img: "https://source.unsplash.com/400x250/?mercedes-c300" },
+          { brand: "Mercedes Benz", model: "E350", year: 2022, price: 38000000, color: "Black", img: "https://source.unsplash.com/400x250/?mercedes-e350" },
+          { brand: "BMW", model: "X5", year: 2021, price: 35000000, color: "Blue", img: "https://source.unsplash.com/400x250/?bmw-x5" },
+          { brand: "BMW", model: "530i", year: 2020, price: 30000000, color: "Black", img: "https://source.unsplash.com/400x250/?bmw-530i" },
+          { brand: "Honda", model: "Accord", year: 2019, price: 15500000, color: "Gray", img: "https://source.unsplash.com/400x250/?honda-accord" },
+          { brand: "Honda", model: "CR-V", year: 2022, price: 21000000, color: "Red", img: "https://source.unsplash.com/400x250/?honda-crv" },
+          { brand: "Range Rover", model: "Evoque", year: 2022, price: 42000000, color: "Silver", img: "https://source.unsplash.com/400x250/?range-rover-evoque" },
+          { brand: "Ford", model: "Explorer", year: 2020, price: 22000000, color: "Red", img: "https://source.unsplash.com/400x250/?ford-explorer" },
+          { brand: "Hyundai", model: "Tucson", year: 2022, price: 19000000, color: "White", img: "https://source.unsplash.com/400x250/?hyundai-tucson" },
+          { brand: "Kia", model: "Sportage", year: 2021, price: 17500000, color: "Black", img: "https://source.unsplash.com/400x250/?kia-sportage" },
+          { brand: "Nissan", model: "Altima", year: 2020, price: 16800000, color: "Brown", img: "https://source.unsplash.com/400x250/?nissan-altima" },
+          { brand: "Nissan", model: "Rogue", year: 2021, price: 20000000, color: "Silver", img: "https://source.unsplash.com/400x250/?nissan-rogue" },
+          
+          // ➕ 20 New Cars Added Below
+          { brand: "Porsche", model: "911 Carrera", year: 2023, price: 90000000, color: "Silver", img: "https://source.unsplash.com/400x250/?porsche-911" },
+          { brand: "Porsche", model: "Macan", year: 2022, price: 60000000, color: "White", img: "https://source.unsplash.com/400x250/?porsche-macan" },
+          { brand: "Tesla", model: "Model Y", year: 2023, price: 45000000, color: "Blue", img: "https://source.unsplash.com/400x250/?tesla-model-y" },
+          { brand: "Tesla", model: "Model S", year: 2022, price: 80000000, color: "Black", img: "https://source.unsplash.com/400x250/?tesla-model-s" },
+          { brand: "Ferrari", model: "812 Superfast", year: 2021, price: 280000000, color: "Red", img: "https://source.unsplash.com/400x250/?ferrari-812-superfast" },
+          { brand: "Lamborghini", model: "Huracán", year: 2022, price: 260000000, color: "Yellow", img: "https://source.unsplash.com/400x250/?lamborghini-huracan" },
+          { brand: "Jaguar", model: "F-Type", year: 2022, price: 95000000, color: "Red", img: "https://source.unsplash.com/400x250/?jaguar-f-type" },
+          { brand: "Maserati", model: "Ghibli", year: 2021, price: 80000000, color: "Blue", img: "https://source.unsplash.com/400x250/?maserati-ghibli" },
+          { brand: "Land Rover", model: "Discovery", year: 2022, price: 55000000, color: "Green", img: "https://source.unsplash.com/400x250/?land-rover-discovery" },
+          { brand: "Mini", model: "Cooper S", year: 2021, price: 17000000, color: "Red", img: "https://source.unsplash.com/400x250/?mini-cooper" },
+          { brand: "Subaru", model: "Impreza", year: 2021, price: 18000000, color: "White", img: "https://source.unsplash.com/400x250/?subaru-impreza" },
+          { brand: "Toyota", model: "RAV4", year: 2022, price: 26000000, color: "Gray", img: "https://source.unsplash.com/400x250/?toyota-rav4" },
+          { brand: "Honda", model: "Pilot", year: 2022, price: 28000000, color: "Blue", img: "https://source.unsplash.com/400x250/?honda-pilot" },
+          { brand: "Kia", model: "Telluride", year: 2023, price: 30000000, color: "Black", img: "https://source.unsplash.com/400x250/?kia-telluride" },
+          { brand: "Chevrolet", model: "Camaro", year: 2022, price: 37000000, color: "Yellow", img: "https://source.unsplash.com/400x250/?chevrolet-camaro" },
+          { brand: "Ford", model: "Mustang", year: 2023, price: 40000000, color: "Red", img: "https://source.unsplash.com/400x250/?ford-mustang" },
+          { brand: "BMW", model: "M4", year: 2023, price: 70000000, color: "White", img: "https://source.unsplash.com/400x250/?bmw-m4" },
+          { brand: "Mercedes Benz", model: "GLE", year: 2022, price: 65000000, color: "Silver", img: "https://source.unsplash.com/400x250/?mercedes-gle" }
         ];
 
         // Global variables for comparison
@@ -1352,22 +1371,22 @@
             const container = document.getElementById('carsContainer');
             container.innerHTML = '';
             
-            cars.forEach(car => {
+            cars.forEach((car, index) => {
                 const carCard = document.createElement('div');
                 carCard.className = 'car-card';
                 carCard.innerHTML = `
-                    <div class="car-image" style="background-image: url('${car.image}')"></div>
+                    <div class="car-image" style="background-image: url('${car.img}')"></div>
                     <div class="car-details">
                         <div class="car-brand">${car.brand} ${car.model}</div>
                         <div class="car-model">${car.model}</div>
                         <div class="car-year">Year: ${car.year}</div>
-                        <div class="car-price">${car.price}</div>
+                        <div class="car-price">₦ ${car.price.toLocaleString()}</div>
                         <div class="car-color">
                             <span>Color:</span>
                             <div class="color-swatch" style="background-color: ${car.color};"></div>
-                            <span>${car.color === '#333' ? 'Black' : car.color === '#fff' ? 'White' : car.color === '#1a3a5f' ? 'Silver' : car.color === '#e63946' ? 'Red' : 'Other'}</span>
+                            <span>${car.color}</span>
                         </div>
-                        <button class="btn btn-primary view-details" data-id="${car.id}" style="background-color: var(--secondary); color: var(--primary); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; width: 100%;">View Details</button>
+                        <button class="btn btn-primary view-details" data-id="${index}" style="background-color: var(--secondary); color: var(--primary); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; width: 100%;">View Details</button>
                     </div>
                 `;
                 container.appendChild(carCard);
@@ -1376,46 +1395,46 @@
             // Add event listeners to view details buttons
             document.querySelectorAll('.view-details').forEach(button => {
                 button.addEventListener('click', function() {
-                    const carId = parseInt(this.getAttribute('data-id'));
-                    showCarDetails(carId);
+                    const carIndex = parseInt(this.getAttribute('data-id'));
+                    showCarDetails(carIndex);
                 });
             });
         }
 
         // Function to show car details in modal
-        function showCarDetails(carId) {
-            const car = carData.find(c => c.id === carId);
+        function showCarDetails(carIndex) {
+            const car = cars[carIndex];
             if (!car) return;
             
             document.getElementById('detailTitle').textContent = `${car.brand} ${car.model}`;
-            document.getElementById('detailImage').style.backgroundImage = `url('${car.image}')`;
+            document.getElementById('detailImage').style.backgroundImage = `url('${car.img}')`;
             document.getElementById('detailBrand').textContent = car.brand;
             document.getElementById('detailModel').textContent = car.model;
             document.getElementById('detailYear').textContent = car.year;
-            document.getElementById('detailPrice').textContent = car.price;
-            document.getElementById('detailEngine').textContent = car.engine;
-            document.getElementById('detailTransmission').textContent = car.transmission;
-            document.getElementById('detailFuel').textContent = car.fuel;
-            document.getElementById('detailMileage').textContent = car.mileage;
-            document.getElementById('detailDescription').textContent = car.description;
+            document.getElementById('detailPrice').textContent = `₦ ${car.price.toLocaleString()}`;
+            document.getElementById('detailEngine').textContent = "Variable";
+            document.getElementById('detailTransmission').textContent = "Variable";
+            document.getElementById('detailFuel').textContent = "Variable";
+            document.getElementById('detailMileage').textContent = "Variable";
+            document.getElementById('detailDescription').textContent = `Experience the ${car.brand} ${car.model} from ${car.year}. This ${car.color} beauty offers exceptional performance and style.`;
             
             // Store the selected car for the Buy Now button
-            document.getElementById('buyNowBtn').dataset.carId = carId;
+            document.getElementById('buyNowBtn').dataset.carIndex = carIndex;
             
             document.getElementById('carDetailModal').style.display = 'flex';
         }
 
         // Function to handle comparison
-        function handleCompare(carId) {
-            const car = carData.find(c => c.id === carId);
+        function handleCompare(carIndex) {
+            const car = cars[carIndex];
             if (!car) return;
             
             // If we already have one car for comparison, add this one
             if (comparedCars.length === 0) {
-                comparedCars.push(car);
+                comparedCars.push({...car, index: carIndex});
                 alert(`"${car.brand} ${car.model}" added to comparison`);
             } else if (comparedCars.length === 1) {
-                comparedCars.push(car);
+                comparedCars.push({...car, index: carIndex});
                 
                 // Display the comparison table
                 displayComparison();
@@ -1424,7 +1443,7 @@
                 document.getElementById('compareModal').style.display = 'flex';
             } else {
                 // If we already have two cars, replace the second one
-                comparedCars[1] = car;
+                comparedCars[1] = {...car, index: carIndex};
                 displayComparison();
             }
         }
@@ -1443,16 +1462,13 @@
             comparisonBody.innerHTML = '';
             
             // Create comparison rows
-            const features = ['Brand', 'Model', 'Year', 'Price', 'Engine', 'Transmission', 'Fuel Type', 'Mileage'];
+            const features = ['Brand', 'Model', 'Year', 'Price', 'Color'];
             const values = [
                 [car1.brand, car2.brand],
                 [car1.model, car2.model],
                 [car1.year, car2.year],
-                [car1.price, car2.price],
-                [car1.engine, car2.engine],
-                [car1.transmission, car2.transmission],
-                [car1.fuel, car2.fuel],
-                [car1.mileage, car2.mileage]
+                [`₦ ${car1.price.toLocaleString()}`, `₦ ${car2.price.toLocaleString()}`],
+                [car1.color, car2.color]
             ];
             
             features.forEach((feature, index) => {
@@ -1470,18 +1486,19 @@
         function selectCarForPurchase(carIndex) {
             const selectedCar = comparedCars[carIndex];
             if (selectedCar) {
-                // Redirect to credentials form with selected car data
+                // Store the selected car in session storage
                 sessionStorage.setItem('selectedCar', JSON.stringify(selectedCar));
-                window.location.href = '#credentials';
+                
+                // Close comparison modal
                 document.getElementById('compareModal').style.display = 'none';
                 
-                // Scroll to credentials section
+                // Scroll to credentials form
                 document.getElementById('credentials').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
         // Initialize the page with all cars
-        generateCarCards(carData);
+        generateCarCards(cars);
 
         // Filter functionality
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1492,9 +1509,9 @@
                 const filter = btn.textContent.trim();
                 
                 if (filter === 'All Brands') {
-                    generateCarCards(carData);
+                    generateCarCards(cars);
                 } else {
-                    const filteredCars = carData.filter(car => car.brand === filter);
+                    const filteredCars = cars.filter(car => car.brand === filter);
                     generateCarCards(filteredCars);
                 }
             });
@@ -1502,12 +1519,15 @@
 
         // Event listener for Buy Now button
         document.getElementById('buyNowBtn').addEventListener('click', function() {
-            const carId = parseInt(this.dataset.carId);
-            const car = carData.find(c => c.id === carId);
+            const carIndex = parseInt(this.dataset.carIndex);
+            const car = cars[carIndex];
             
             if (car) {
                 // Store the selected car in session storage
-                sessionStorage.setItem('selectedCar', JSON.stringify(car));
+                sessionStorage.setItem('selectedCar', JSON.stringify({...car, index: carIndex}));
+                
+                // Close detail modal
+                document.getElementById('carDetailModal').style.display = 'none';
                 
                 // Scroll to credentials form
                 document.getElementById('credentials').scrollIntoView({ behavior: 'smooth' });
@@ -1516,8 +1536,8 @@
 
         // Event listener for Compare button
         document.getElementById('compareBtn').addEventListener('click', function() {
-            const carId = parseInt(document.getElementById('buyNowBtn').dataset.carId);
-            handleCompare(carId);
+            const carIndex = parseInt(document.getElementById('buyNowBtn').dataset.carIndex);
+            handleCompare(carIndex);
             document.getElementById('carDetailModal').style.display = 'none';
         });
 
