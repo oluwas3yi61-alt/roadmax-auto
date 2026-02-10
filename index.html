@@ -206,35 +206,46 @@
             margin-bottom: 0.8rem;
         }
         
-        .cars-section {
+        .brands-section {
             background-color: #f0f5ff;
             padding: 4rem 0;
         }
         
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
         }
         
-        .filter-btn {
-            padding: 0.6rem 1.2rem;
+        .brand-card {
             background: white;
-            border: 2px solid var(--primary);
-            border-radius: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 2rem 1rem;
         }
         
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .cars-grid {
+        .brand-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .brand-cars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
@@ -825,6 +836,26 @@
             flex: 1;
         }
         
+        /* Brand Page Styles */
+        .brand-header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .brand-name-large {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .brand-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -878,8 +909,8 @@
             <nav>
                 <ul>
                     <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#brands">Brands</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#inventory">Inventory</a></li>
                     <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#delivery">Delivery</a></li>
                     <li><a href="#credentials">Credentials</a></li>
@@ -897,7 +928,7 @@
         <div class="hero-content">
             <h2>Premium Cars & Reliable Interstate Delivery</h2>
             <p>Discover your dream car and enjoy seamless delivery across Nigeria. Trusted by thousands of satisfied customers.</p>
-            <a href="#inventory" class="btn btn-primary" style="background-color: var(--secondary); color: var(--primary); padding: 0.8rem 2rem; font-size: 1.1rem; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 1rem; transition: all 0.3s ease;">Browse Inventory</a>
+            <a href="#brands" class="btn btn-primary" style="background-color: var(--secondary); color: var(--primary); padding: 0.8rem 2rem; font-size: 1.1rem; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 1rem; transition: all 0.3s ease;">Browse Brands</a>
         </div>
     </section>
 
@@ -944,23 +975,59 @@
         </div>
     </section>
 
-    <!-- Cars Inventory Section -->
-    <section id="inventory" class="cars-section">
+    <!-- Brands Section -->
+    <section id="brands" class="brands-section">
         <div class="container">
-            <h2 class="section-title">Vehicle Inventory</h2>
-            <div class="filters">
-                <button class="filter-btn active">All Brands</button>
-                <button class="filter-btn">Toyota</button>
-                <button class="filter-btn">Honda</button>
-                <button class="filter-btn">Mercedes</button>
-                <button class="filter-btn">BMW</button>
-                <button class="filter-btn">Ford</button>
-                <button class="filter-btn">Nissan</button>
-                <button class="filter-btn">Hyundai</button>
-                <button class="filter-btn">Lexus</button>
-            </div>
-            <div class="cars-grid" id="carsContainer">
-                <!-- Cars will be dynamically inserted here -->
+            <h2 class="section-title">Car Brands</h2>
+            <div class="brands-grid">
+                <div class="brand-card" data-brand="Toyota">
+                    <div class="brand-logo">
+                        <i class="fab fa-empire"></i>
+                    </div>
+                    <div class="brand-name">Toyota</div>
+                </div>
+                <div class="brand-card" data-brand="Honda">
+                    <div class="brand-logo">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="brand-name">Honda</div>
+                </div>
+                <div class="brand-card" data-brand="Mercedes Benz">
+                    <div class="brand-logo">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="brand-name">Mercedes Benz</div>
+                </div>
+                <div class="brand-card" data-brand="BMW">
+                    <div class="brand-logo">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="brand-name">BMW</div>
+                </div>
+                <div class="brand-card" data-brand="Ford">
+                    <div class="brand-logo">
+                        <i class="fas fa-horse"></i>
+                    </div>
+                    <div class="brand-name">Ford</div>
+                </div>
+                <div class="brand-card" data-brand="Nissan">
+                    <div class="brand-logo">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="brand-name">Nissan</div>
+                </div>
+                <div class="brand-card" data-brand="Audi">
+                    <div class="brand-logo">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="brand-name">Audi</div>
+                </div>
+                <div class="brand-card" data-brand="Volkswagen">
+                    <div class="brand-logo">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="brand-name">Volkswagen</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1283,8 +1350,8 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#">Home</a></li>
+                        <li><a href="#brands">Brands</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#inventory">Inventory</a></li>
                         <li><a href="#reviews">Reviews</a></li>
                         <li><a href="#delivery">Delivery</a></li>
                         <li><a href="#credentials">Credentials</a></li>
@@ -1306,197 +1373,309 @@
         </div>
     </footer>
 
-<script>
-// ================== CAR DATABASE (UNCHANGED IMAGE SOURCES) ==================
-const cars = [
+    <script>
+        // Brand data with 6 cars per brand
+        const brandsData = {
+            "Toyota": [
+                { brand: "Toyota", model: "Camry", year: 2024, price: 12500000, color: "Black", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Toyota Camry is a reliable midsize sedan known for its fuel efficiency and spacious interior. Perfect for families and business travelers alike." },
+                { brand: "Toyota", model: "Corolla", year: 2023, price: 9500000, color: "White", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Toyota Corolla is the world's best-selling car, offering excellent reliability and fuel economy. Ideal for daily commuting." },
+                { brand: "Toyota", model: "Highlander", year: 2024, price: 20000000, color: "Silver", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Toyota Highlander is a three-row SUV with plenty of space for passengers and cargo. Perfect for large families." },
+                { brand: "Toyota", model: "RAV4", year: 2023, price: 16000000, color: "Blue", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Toyota RAV4 is a compact SUV that combines versatility with fuel efficiency. Great for urban and suburban driving." },
+                { brand: "Toyota", model: "Prius", year: 2023, price: 13500000, color: "Pearl", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Toyota Prius is the pioneer of hybrid vehicles, offering exceptional fuel economy and environmental friendliness." },
+                { brand: "Toyota", model: "Tacoma", year: 2024, price: 18500000, color: "Red", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Toyota Tacoma is a midsize pickup truck known for its durability and off-road capabilities." }
+            ],
+            "Honda": [
+                { brand: "Honda", model: "Accord", year: 2024, price: 13000000, color: "White", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Honda Accord is a midsize sedan that offers a perfect blend of performance, comfort, and reliability. A top choice for many buyers." },
+                { brand: "Honda", model: "Civic", year: 2023, price: 10000000, color: "Red", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Honda Civic is a compact car that offers excellent fuel efficiency and a sporty driving experience. Popular among young drivers." },
+                { brand: "Honda", model: "CR-V", year: 2024, price: 17000000, color: "Black", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Honda CR-V is a compact SUV that provides ample space and versatility for families. Known for its reliability." },
+                { brand: "Honda", model: "Pilot", year: 2023, price: 22000000, color: "Silver", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Honda Pilot is a three-row SUV that offers spacious seating and advanced safety features. Ideal for large families." },
+                { brand: "Honda", model: "Odyssey", year: 2024, price: 20000000, color: "Pearl", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Honda Odyssey is a minivan designed for families, offering innovative features and comfortable seating for up to 8 passengers." },
+                { brand: "Honda", model: "HR-V", year: 2023, price: 14500000, color: "Blue", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Honda HR-V is a subcompact SUV that maximizes interior space while maintaining fuel efficiency. Perfect for city driving." }
+            ],
+            "Mercedes Benz": [
+                { brand: "Mercedes Benz", model: "C-Class", year: 2024, price: 28000000, color: "Black", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Mercedes C-Class is a luxury sedan that combines elegance with performance. Features advanced technology and premium materials." },
+                { brand: "Mercedes Benz", model: "E-Class", year: 2023, price: 35000000, color: "White", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Mercedes E-Class offers a perfect balance of luxury and practicality. Known for its sophisticated design and advanced features." },
+                { brand: "Mercedes Benz", model: "S-Class", year: 2024, price: 50000000, color: "Silver", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Mercedes S-Class is the flagship luxury sedan, setting the standard for comfort, technology, and performance." },
+                { brand: "Mercedes Benz", model: "GLC", year: 2023, price: 32000000, color: "Blue", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Mercedes GLC is a luxury SUV that offers a perfect blend of performance and comfort. Features advanced safety systems." },
+                { brand: "Mercedes Benz", model: "GLE", year: 2024, price: 42000000, color: "Red", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Mercedes GLE is a full-size luxury SUV with spacious seating and advanced technology. Perfect for luxury enthusiasts." },
+                { brand: "Mercedes Benz", model: "GLA", year: 2023, price: 25000000, color: "Pearl", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Mercedes GLA is a compact luxury SUV that offers premium features in a smaller package. Ideal for urban environments." }
+            ],
+            "BMW": [
+                { brand: "BMW", model: "3 Series", year: 2024, price: 27000000, color: "Black", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The BMW 3 Series is the ultimate driving machine, offering precise handling and luxury features. A favorite among driving enthusiasts." },
+                { brand: "BMW", model: "5 Series", year: 2023, price: 35000000, color: "White", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The BMW 5 Series combines luxury with performance. Offers advanced technology and a spacious, comfortable interior." },
+                { brand: "BMW", model: "7 Series", year: 2024, price: 55000000, color: "Silver", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The BMW 7 Series is the flagship luxury sedan, featuring the latest technology and unparalleled comfort." },
+                { brand: "BMW", model: "X3", year: 2023, price: 30000000, color: "Blue", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The BMW X3 is a compact luxury SUV that offers excellent driving dynamics and premium features. Perfect for active lifestyles." },
+                { brand: "BMW", model: "X5", year: 2024, price: 42000000, color: "Red", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The BMW X5 is a midsize luxury SUV with powerful performance and a luxurious interior. A leader in its segment." },
+                { brand: "BMW", model: "X1", year: 2023, price: 24000000, color: "Pearl", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The BMW X1 is a subcompact luxury SUV that offers premium features in a compact size. Great for city driving." }
+            ],
+            "Ford": [
+                { brand: "Ford", model: "F-150", year: 2024, price: 19000000, color: "Black", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Ford F-150 is America's best-selling truck, offering powerful engines and versatile capabilities for work and recreation." },
+                { brand: "Ford", model: "Escape", year: 2023, price: 14000000, color: "White", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Ford Escape is a compact SUV that offers fuel efficiency and practicality. Perfect for urban adventures." },
+                { brand: "Ford", model: "Explorer", year: 2024, price: 22000000, color: "Silver", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Ford Explorer is a three-row SUV with spacious seating and advanced technology. Ideal for large families." },
+                { brand: "Ford", model: "Edge", year: 2023, price: 18000000, color: "Blue", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Ford Edge is a midsize SUV that offers a refined driving experience and premium features." },
+                { brand: "Ford", model: "Mustang", year: 2024, price: 28000000, color: "Red", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Ford Mustang is an iconic American muscle car that offers powerful performance and sporty styling." },
+                { brand: "Ford", model: "Focus", year: 2023, price: 11000000, color: "Pearl", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Ford Focus is a compact car that offers excellent fuel economy and agile handling. Perfect for city driving." }
+            ],
+            "Nissan": [
+                { brand: "Nissan", model: "Altima", year: 2024, price: 11500000, color: "Black", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Nissan Altima is a midsize sedan that offers a comfortable ride and advanced safety features. Great value for money." },
+                { brand: "Nissan", model: "Rogue", year: 2023, price: 15000000, color: "White", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Nissan Rogue is a compact SUV that offers spacious seating and fuel efficiency. Perfect for families." },
+                { brand: "Nissan", model: "Sentra", year: 2024, price: 9500000, color: "Silver", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Nissan Sentra is a compact sedan that offers excellent fuel economy and practical features. Ideal for daily commuting." },
+                { brand: "Nissan", model: "Pathfinder", year: 2023, price: 19000000, color: "Blue", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Nissan Pathfinder is a three-row SUV with ample space for passengers and cargo. Great for family adventures." },
+                { brand: "Nissan", model: "Murano", year: 2024, price: 18000000, color: "Pearl", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Nissan Murano is a midsize SUV with a luxurious interior and smooth ride quality. Stylish and comfortable." },
+                { brand: "Nissan", model: "Frontier", year: 2023, price: 16000000, color: "Red", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Nissan Frontier is a midsize pickup truck that offers durability and versatility. Perfect for work and play." }
+            ],
+            "Audi": [
+                { brand: "Audi", model: "A4", year: 2024, price: 25000000, color: "Black", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Audi A4 is a luxury sedan that combines performance with elegance. Features Quattro all-wheel drive and premium materials." },
+                { brand: "Audi", model: "A6", year: 2023, price: 32000000, color: "White", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Audi A6 is a full-size luxury sedan with advanced technology and a refined driving experience. Perfect for executives." },
+                { brand: "Audi", model: "Q5", year: 2024, price: 30000000, color: "Silver", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Audi Q5 is a luxury SUV that offers Quattro all-wheel drive and premium features. Ideal for all weather conditions." },
+                { brand: "Audi", model: "Q7", year: 2023, price: 40000000, color: "Blue", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Audi Q7 is a full-size luxury SUV with three rows of seating and advanced technology. Perfect for large families." },
+                { brand: "Audi", model: "A8", year: 2024, price: 50000000, color: "Red", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Audi A8 is the flagship luxury sedan, featuring the latest technology and unparalleled comfort. The epitome of luxury." },
+                { brand: "Audi", model: "Q3", year: 2023, price: 22000000, color: "Pearl", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Audi Q3 is a compact luxury SUV that offers premium features in a smaller package. Great for urban environments." }
+            ],
+            "Volkswagen": [
+                { brand: "Volkswagen", model: "Jetta", year: 2024, price: 12000000, color: "Black", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Volkswagen Jetta is a compact sedan that offers German engineering and practicality. Known for its reliability." },
+                { brand: "Volkswagen", model: "Passat", year: 2023, price: 14000000, color: "White", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Volkswagen Passat is a midsize sedan that offers a comfortable ride and advanced safety features. Great value for money." },
+                { brand: "Volkswagen", model: "Tiguan", year: 2024, price: 18000000, color: "Silver", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Volkswagen Tiguan is a compact SUV that offers spacious seating and practical features. Perfect for families." },
+                { brand: "Volkswagen", model: "Atlas", year: 2023, price: 20000000, color: "Blue", img: "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Volkswagen Atlas is a full-size SUV with three rows of seating and advanced technology. Ideal for large families." },
+                { brand: "Volkswagen", model: "Golf", year: 2024, price: 11000000, color: "Red", img: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Volkswagen Golf is a hatchback that offers agile handling and fuel efficiency. A versatile choice for any driver." },
+                { brand: "Volkswagen", model: "Arteon", year: 2023, price: 22000000, color: "Pearl", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", details: "The Volkswagen Arteon is a luxury sedan with coupe-like styling and advanced technology. Combines elegance with performance." }
+            ]
+        };
 
-  { brand:"Audi", model:"A4", year:2021, price:27000000, color:"Black",
-    img:"https://source.unsplash.com/400x250/?audi-a4", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"15,000km",
-    description:"Luxury compact sedan with premium comfort and performance." },
-
-  { brand:"Audi", model:"Q7", year:2022, price:45000000, color:"White",
-    img:"https://source.unsplash.com/400x250/?audi-q7", engine:"3.0L V6", transmission:"Automatic", fuel:"Petrol", mileage:"10,000km",
-    description:"Spacious 7-seater SUV with advanced tech and smooth ride." },
-
-  { brand:"BMW", model:"X5", year:2021, price:35000000, color:"Blue",
-    img:"https://upload.wikimedia.org/wikipedia/commons/5/5b/2019_BMW_X5.jpg", engine:"3.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"18,000km",
-    description:"Executive SUV combining luxury and sporty performance." },
-
-  { brand:"Mercedes Benz", model:"C300", year:2021, price:32000000, color:"White",
-    img:"https://upload.wikimedia.org/wikipedia/commons/3/3e/2019_Mercedes-Benz_C300.jpg", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"14,000km",
-    description:"Premium sedan with elegant design and advanced features." },
-
-  { brand:"Toyota", model:"Camry", year:2020, price:18000000, color:"Black",
-    img:"https://source.unsplash.com/400x250/?toyota-camry", engine:"2.5L", transmission:"Automatic", fuel:"Petrol", mileage:"25,000km",
-    description:"Reliable family sedan known for durability and comfort." },
-
-  { brand:"Lexus", model:"RX 350", year:2022, price:28000000, color:"Gray",
-    img:"https://source.unsplash.com/400x250/?lexus-rx350", engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"9,000km",
-    description:"Luxury crossover SUV with refined interior and smooth ride." },
-
-  { brand:"Honda", model:"CR-V", year:2022, price:21000000, color:"Red",
-    img:"https://upload.wikimedia.org/wikipedia/commons/0/0c/2020_Honda_CR-V.jpg", engine:"2.4L", transmission:"Automatic", fuel:"Petrol", mileage:"12,000km",
-    description:"Efficient compact SUV perfect for city and highway driving." },
-
-  { brand:"Range Rover", model:"Evoque", year:2022, price:42000000, color:"Silver",
-    img:"https://upload.wikimedia.org/wikipedia/commons/2/24/Range_Rover_Evoque_2020.jpg", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"8,000km",
-    description:"Stylish compact SUV with off-road capability and luxury." },
-
-  { brand:"Toyota", model:"Corolla", year:2021, price:14200000, color:"White",
-    img:"https://source.unsplash.com/400x250/?toyota-corolla", engine:"1.8L", transmission:"Automatic", fuel:"Petrol", mileage:"21,000km",
-    description:"Durable compact sedan ideal for everyday use." },
-
-  { brand:"Toyota", model:"Highlander", year:2022, price:29000000, color:"Silver",
-    img:"https://source.unsplash.com/400x250/?toyota-highlander", engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"10,000km",
-    description:"Spacious SUV built for comfort and long trips." },
-
-  { brand:"BMW", model:"530i", year:2020, price:30000000, color:"Black",
-    img:"https://source.unsplash.com/400x250/?bmw-530i", engine:"2.0L Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"20,000km",
-    description:"Sporty executive sedan with premium features." },
-
-  { brand:"Peugeot", model:"3008", year:2021, price:17000000, color:"Gray",
-    img:"https://source.unsplash.com/400x250/?peugeot-3008", engine:"1.6L", transmission:"Automatic", fuel:"Petrol", mileage:"19,000km",
-    description:"Modern crossover SUV with bold design." },
-
-  { brand:"Mazda", model:"CX-5", year:2022, price:20500000, color:"Red",
-    img:"https://source.unsplash.com/400x250/?mazda-cx5", engine:"2.5L", transmission:"Automatic", fuel:"Petrol", mileage:"13,000km",
-    description:"Sporty compact SUV with smooth handling." },
-
-  { brand:"Nissan", model:"Altima", year:2020, price:16800000, color:"Brown",
-    img:"https://source.unsplash.com/400x250/?nissan-altima", engine:"2.5L", transmission:"Automatic", fuel:"Petrol", mileage:"26,000km",
-    description:"Comfortable and fuel-efficient sedan." },
-
-  { brand:"Hyundai", model:"Tucson", year:2022, price:19000000, color:"White",
-    img:"https://source.unsplash.com/400x250/?hyundai-tucson", engine:"2.0L", transmission:"Automatic", fuel:"Petrol", mileage:"12,000km",
-    description:"Modern compact SUV with advanced tech." },
-
-  { brand:"Kia", model:"Sportage", year:2021, price:17500000, color:"Black",
-    img:"https://source.unsplash.com/400x250/?kia-sportage", engine:"2.0L", transmission:"Automatic", fuel:"Petrol", mileage:"19,000km",
-    description:"Stylish crossover perfect for families." },
-
-  { brand:"Ford", model:"Explorer", year:2020, price:22000000, color:"Red",
-    img:"https://source.unsplash.com/400x250/?ford-explorer", engine:"3.5L V6", transmission:"Automatic", fuel:"Petrol", mileage:"27,000km",
-    description:"Strong and reliable family SUV." },
-
-  { brand:"Jeep", model:"Wrangler", year:2022, price:39000000, color:"Green",
-    img:"https://source.unsplash.com/400x250/?jeep-wrangler", engine:"3.6L V6", transmission:"Automatic", fuel:"Petrol", mileage:"11,000km",
-    description:"Legendary off-road SUV built for adventure." },
-
-  { brand:"Porsche", model:"911 Carrera", year:2023, price:90000000, color:"Silver",
-    img:"https://source.unsplash.com/400x250/?porsche-911", engine:"3.0L Twin Turbo", transmission:"Automatic", fuel:"Petrol", mileage:"5,000km",
-    description:"Iconic sports car delivering thrilling performance." },
-
-  { brand:"Tesla", model:"Model S", year:2022, price:80000000, color:"Black",
-    img:"https://source.unsplash.com/400x250/?tesla-model-s", engine:"Electric", transmission:"Automatic", fuel:"Electric", mileage:"6,000km",
-    description:"Premium electric sedan with futuristic technology." }
-
-];
-</script>
-
-     <script>
-// ================= OPEN DETAIL MODAL =================
-function openCarDetail(car){
-  document.getElementById("carDetailModal").style.display = "flex";
-
-  detailTitle.textContent = car.brand + " " + car.model;
-  detailBrand.textContent = car.brand;
-  detailModel.textContent = car.model;
-  detailYear.textContent = car.year;
-  detailPrice.textContent = "₦" + car.price.toLocaleString();
-  detailEngine.textContent = car.engine;
-  detailTransmission.textContent = car.transmission;
-  detailFuel.textContent = car.fuel;
-  detailMileage.textContent = car.mileage;
-  detailDescription.textContent = car.description;
-
-  detailImage.innerHTML = `<img src="${car.img}" style="width:100%;border-radius:12px;">`;
-
-  buyNowBtn.onclick = () => alert(`Proceed to buy ${car.brand} ${car.model}`);
-  compareBtn.onclick = () => addToCompare(car);
-}
-
-// ================= CLOSE DETAIL =================
-document.querySelector(".close-detail").onclick = () => {
-  carDetailModal.style.display = "none";
-};
-
-// ================= COMPARE SYSTEM =================
-let compareCars = [];
-
-function addToCompare(car){
-  if(compareCars.length < 2){
-    compareCars.push(car);
-  }
-  if(compareCars.length === 2){
-    openCompareModal();
-  }
-}
-
-function openCompareModal(){
-  compareModal.style.display = "flex";
-
-  compCar1Header.textContent = compareCars[0].brand + " " + compareCars[0].model;
-  compCar2Header.textContent = compareCars[1].brand + " " + compareCars[1].model;
-
-  comparisonBody.innerHTML = "";
-  ["year","price","engine","transmission","fuel","mileage"].forEach(f=>{
-    comparisonBody.innerHTML += `
-      <tr>
-        <td>${f.toUpperCase()}</td>
-        <td>${compareCars[0][f]}</td>
-        <td>${compareCars[1][f]}</td>
-      </tr>`;
-  });
-}
-
-document.querySelector(".close-compare").onclick = ()=>{
-  compareModal.style.display="none";
-  compareCars=[];
-};
-</script>
-      
         // Global variables for comparison
         let comparedCars = [];
         let selectedCarForComparison = null;
+        let selectedCarForPurchase = null;
 
-        // Function to generate car cards
-        function generateCarCards(cars) {
-            const container = document.getElementById('carsContainer');
+        // Function to generate brand cards
+        function generateBrandCards() {
+            const container = document.getElementById('brandsContainer');
             container.innerHTML = '';
             
-            cars.forEach((car, index) => {
-                const carCard = document.createElement('div');
-                carCard.className = 'car-card';
-                carCard.innerHTML = `
-                    <div class="car-image" style="background-image: url('${car.img}')"></div>
-                    <div class="car-details">
-                        <div class="car-brand">${car.brand} ${car.model}</div>
-                        <div class="car-model">${car.model}</div>
-                        <div class="car-year">Year: ${car.year}</div>
-                        <div class="car-price">₦ ${car.price.toLocaleString()}</div>
-                        <div class="car-color">
-                            <span>Color:</span>
-                            <div class="color-swatch" style="background-color: ${car.color};"></div>
-                            <span>${car.color}</span>
+            Object.keys(brandsData).forEach(brand => {
+                const brandCard = document.createElement('div');
+                brandCard.className = 'brand-card';
+                brandCard.dataset.brand = brand;
+                brandCard.innerHTML = `
+                    <div class="brand-logo">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="brand-name">${brand}</div>
+                `;
+                container.appendChild(brandCard);
+            });
+            
+            // Add event listeners to brand cards
+            document.querySelectorAll('.brand-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const brand = this.dataset.brand;
+                    showBrandPage(brand);
+                });
+            });
+        }
+
+        // Function to show brand page
+        function showBrandPage(brand) {
+            // Create brand page content
+            const brandCars = brandsData[brand];
+            let carsHtml = '';
+            
+            brandCars.forEach((car, index) => {
+                carsHtml += `
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('${car.img}')"></div>
+                        <div class="car-details">
+                            <div class="car-brand">${car.brand} ${car.model}</div>
+                            <div class="car-model">${car.model}</div>
+                            <div class="car-year">Year: ${car.year}</div>
+                            <div class="car-price">₦ ${car.price.toLocaleString()}</div>
+                            <div class="car-color">
+                                <span>Color:</span>
+                                <div class="color-swatch" style="background-color: ${car.color};"></div>
+                                <span>${car.color}</span>
+                            </div>
+                            <button class="btn btn-primary view-details" data-id="${index}" data-brand="${brand}" style="background-color: var(--secondary); color: var(--primary); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; width: 100%;">View Details</button>
                         </div>
-                        <button class="btn btn-primary view-details" data-id="${index}" style="background-color: var(--secondary); color: var(--primary); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; width: 100%;">View Details</button>
                     </div>
                 `;
-                container.appendChild(carCard);
             });
+            
+            // Replace body content with brand page
+            document.body.innerHTML = `
+                <header>
+                    <div class="header-container">
+                        <div class="logo">
+                            <i class="fas fa-car"></i>
+                            <h1>Roadmax Autos</h1>
+                        </div>
+                        <nav>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.html#brands">Brands</a></li>
+                                <li><a href="index.html#services">Services</a></li>
+                                <li><a href="index.html#reviews">Reviews</a></li>
+                                <li><a href="index.html#delivery">Delivery</a></li>
+                                <li><a href="index.html#credentials">Credentials</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+                
+                <section class="brand-header">
+                    <div class="container">
+                        <h1 class="brand-name-large">${brand}</h1>
+                        <p class="brand-description">Explore our premium collection of ${brand} vehicles. Each car is carefully selected for its quality, performance, and value.</p>
+                    </div>
+                </section>
+                
+                <section class="container">
+                    <div class="brand-cars-grid" id="brandCarsContainer">
+                        ${carsHtml}
+                    </div>
+                </section>
+                
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-column">
+                                <h3>Roadmax Autos</h3>
+                                <p>Your trusted partner for premium vehicles and reliable interstate delivery services across Nigeria.</p>
+                                <div class="social-icons">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                            <div class="footer-column">
+                                <h3>Quick Links</h3>
+                                <ul class="footer-links">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.html#brands">Brands</a></li>
+                                    <li><a href="index.html#services">Services</a></li>
+                                    <li><a href="index.html#reviews">Reviews</a></li>
+                                    <li><a href="index.html#delivery">Delivery</a></li>
+                                    <li><a href="index.html#credentials">Credentials</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-column">
+                                <h3>Contact Info</h3>
+                                <div class="contact-info">
+                                    <p><i class="fas fa-map-marker-alt"></i> No 34 Ajayi Crescent, Opposite Grandline Hotel, Abuja</p>
+                                    <p><i class="fas fa-phone"></i> +234 800 123 4567</p>
+                                    <p><i class="fas fa-envelope"></i> info@roadmaxautos.com</p>
+                                    <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            &copy; 2026 Roadmax Autos. All Rights Reserved.
+                        </div>
+                    </div>
+                </footer>
+                
+                <!-- Car Detail Modal -->
+                <div id="carDetailModal" class="car-detail-modal">
+                    <div class="car-detail-content">
+                        <div class="car-detail-header">
+                            <h3 id="detailTitle">Car Details</h3>
+                            <button class="close-detail">&times;</button>
+                        </div>
+                        <div class="car-detail-body">
+                            <div class="car-detail-image" id="detailImage"></div>
+                            <div class="car-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Brand</span>
+                                    <span id="detailBrand">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Model</span>
+                                    <span id="detailModel">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Year</span>
+                                    <span id="detailYear">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Price</span>
+                                    <span id="detailPrice">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Engine</span>
+                                    <span id="detailEngine">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Transmission</span>
+                                    <span id="detailTransmission">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Fuel Type</span>
+                                    <span id="detailFuel">-</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Mileage</span>
+                                    <span id="detailMileage">-</span>
+                                </div>
+                            </div>
+                            <div class="car-description">
+                                <h3>Description</h3>
+                                <p id="detailDescription">Detailed description of the vehicle will appear here.</p>
+                            </div>
+                            <div class="car-actions">
+                                <button class="btn btn-buy" id="buyNowBtn">Buy Now</button>
+                                <button class="btn btn-compare" id="compareBtn">Compare</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compare Modal -->
+                <div id="compareModal" class="compare-modal">
+                    <div class="compare-content">
+                        <div class="compare-header">
+                            <h3>Compare Cars</h3>
+                            <button class="close-compare">&times;</button>
+                        </div>
+                        <div class="compare-body">
+                            <div id="comparisonTableContainer">
+                                <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th id="compCar1Header">Car 1</th>
+                                            <th id="compCar2Header">Car 2</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="comparisonBody">
+                                        <!-- Comparison data will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="comparison-actions">
+                                <button class="btn btn-select" id="selectCarBtn">Select This Car</button>
+                                <button class="btn btn-remove" id="removeComparisonBtn">Remove Comparison</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
             
             // Add event listeners to view details buttons
             document.querySelectorAll('.view-details').forEach(button => {
                 button.addEventListener('click', function() {
                     const carIndex = parseInt(this.getAttribute('data-id'));
-                    showCarDetails(carIndex);
+                    const brand = this.getAttribute('data-brand');
+                    const car = brandsData[brand][carIndex];
+                    showCarDetails(car);
                 });
             });
+            
+            // Re-initialize modal functionality
+            initModalFunctionality();
         }
 
         // Function to show car details in modal
-        function showCarDetails(carIndex) {
-            const car = cars[carIndex];
+        function showCarDetails(car) {
             if (!car) return;
             
             document.getElementById('detailTitle').textContent = `${car.brand} ${car.model}`;
@@ -1509,25 +1688,24 @@ document.querySelector(".close-compare").onclick = ()=>{
             document.getElementById('detailTransmission').textContent = "Variable";
             document.getElementById('detailFuel').textContent = "Variable";
             document.getElementById('detailMileage').textContent = "Variable";
-            document.getElementById('detailDescription').textContent = `Experience the ${car.brand} ${car.model} from ${car.year}. This ${car.color} beauty offers exceptional performance and style.`;
+            document.getElementById('detailDescription').textContent = car.details;
             
             // Store the selected car for the Buy Now button
-            document.getElementById('buyNowBtn').dataset.carIndex = carIndex;
+            selectedCarForPurchase = car;
             
             document.getElementById('carDetailModal').style.display = 'flex';
         }
 
         // Function to handle comparison
-        function handleCompare(carIndex) {
-            const car = cars[carIndex];
+        function handleCompare(car) {
             if (!car) return;
             
             // If we already have one car for comparison, add this one
             if (comparedCars.length === 0) {
-                comparedCars.push({...car, index: carIndex});
+                comparedCars.push(car);
                 alert(`"${car.brand} ${car.model}" added to comparison`);
             } else if (comparedCars.length === 1) {
-                comparedCars.push({...car, index: carIndex});
+                comparedCars.push(car);
                 
                 // Display the comparison table
                 displayComparison();
@@ -1536,7 +1714,7 @@ document.querySelector(".close-compare").onclick = ()=>{
                 document.getElementById('compareModal').style.display = 'flex';
             } else {
                 // If we already have two cars, replace the second one
-                comparedCars[1] = {...car, index: carIndex};
+                comparedCars[1] = car;
                 displayComparison();
             }
         }
@@ -1585,123 +1763,68 @@ document.querySelector(".close-compare").onclick = ()=>{
                 // Close comparison modal
                 document.getElementById('compareModal').style.display = 'none';
                 
-                // Scroll to credentials form
-                document.getElementById('credentials').scrollIntoView({ behavior: 'smooth' });
+                // Redirect to home page and scroll to credentials section
+                window.location.href = 'index.html#credentials';
             }
         }
 
-        // Initialize the page with all cars
-        generateCarCards(cars);
-
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.textContent.trim();
-                
-                if (filter === 'All Brands') {
-                    generateCarCards(cars);
-                } else {
-                    const filteredCars = cars.filter(car => car.brand === filter);
-                    generateCarCards(filteredCars);
+        // Initialize modal functionality
+        function initModalFunctionality() {
+            // Event listener for Buy Now button
+            document.getElementById('buyNowBtn')?.addEventListener('click', function() {
+                if (selectedCarForPurchase) {
+                    // Store the selected car in session storage
+                    sessionStorage.setItem('selectedCar', JSON.stringify(selectedCarForPurchase));
+                    
+                    // Close detail modal
+                    document.getElementById('carDetailModal').style.display = 'none';
+                    
+                    // Redirect to home page and scroll to credentials section
+                    window.location.href = 'index.html#credentials';
                 }
             });
-        });
 
-        // Event listener for Buy Now button
-        document.getElementById('buyNowBtn').addEventListener('click', function() {
-            const carIndex = parseInt(this.dataset.carIndex);
-            const car = cars[carIndex];
-            
-            if (car) {
-                // Store the selected car in session storage
-                sessionStorage.setItem('selectedCar', JSON.stringify({...car, index: carIndex}));
-                
-                // Close detail modal
-                document.getElementById('carDetailModal').style.display = 'none';
-                
-                // Scroll to credentials form
-                document.getElementById('credentials').scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-
-        // Event listener for Compare button
-        document.getElementById('compareBtn').addEventListener('click', function() {
-            const carIndex = parseInt(document.getElementById('buyNowBtn').dataset.carIndex);
-            handleCompare(carIndex);
-            document.getElementById('carDetailModal').style.display = 'none';
-        });
-
-        // Event listener for Select This Car button in comparison
-        document.getElementById('selectCarBtn').addEventListener('click', function() {
-            // Select the first car by default
-            selectCarForPurchase(0);
-        });
-
-        // Event listener for Remove Comparison button
-        document.getElementById('removeComparisonBtn').addEventListener('click', function() {
-            comparedCars = [];
-            document.getElementById('compareModal').style.display = 'none';
-        });
-
-        // Modal functionality
-        const loginBtn = document.getElementById('loginBtn');
-        const signupBtn = document.getElementById('signupBtn');
-        const modal = document.getElementById('authModal');
-        const closeModal = document.querySelector('.close-modal');
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabs = document.querySelectorAll('.tab-content');
-        const closeDetailBtn = document.querySelector('.close-detail');
-        const closeCompareBtn = document.querySelector('.close-compare');
-
-        loginBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
-
-        signupBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        closeDetailBtn.addEventListener('click', () => {
-            document.getElementById('carDetailModal').style.display = 'none';
-        });
-
-        closeCompareBtn.addEventListener('click', () => {
-            document.getElementById('compareModal').style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-            if (e.target === document.getElementById('carDetailModal')) {
-                document.getElementById('carDetailModal').style.display = 'none';
-            }
-            if (e.target === document.getElementById('compareModal')) {
-                document.getElementById('compareModal').style.display = 'none';
-            }
-        });
-
-        // Tab switching
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.getAttribute('data-tab');
-                
-                // Remove active class from all tabs and buttons
-                tabs.forEach(tab => tab.classList.remove('active'));
-                tabBtns.forEach(b => b.classList.remove('active'));
-                
-                // Add active class to clicked tab and button
-                document.getElementById(`${tabId}Tab`).classList.add('active');
-                btn.classList.add('active');
+            // Event listener for Compare button
+            document.getElementById('compareBtn')?.addEventListener('click', function() {
+                if (selectedCarForPurchase) {
+                    handleCompare(selectedCarForPurchase);
+                    document.getElementById('carDetailModal').style.display = 'none';
+                }
             });
-        });
+
+            // Event listener for Select This Car button in comparison
+            document.getElementById('selectCarBtn')?.addEventListener('click', function() {
+                // Select the first car by default
+                selectCarForPurchase(0);
+            });
+
+            // Event listener for Remove Comparison button
+            document.getElementById('removeComparisonBtn')?.addEventListener('click', function() {
+                comparedCars = [];
+                document.getElementById('compareModal').style.display = 'none';
+            });
+
+            // Close modals
+            document.querySelector('.close-detail')?.addEventListener('click', () => {
+                document.getElementById('carDetailModal').style.display = 'none';
+            });
+
+            document.querySelector('.close-compare')?.addEventListener('click', () => {
+                document.getElementById('compareModal').style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === document.getElementById('carDetailModal')) {
+                    document.getElementById('carDetailModal').style.display = 'none';
+                }
+                if (e.target === document.getElementById('compareModal')) {
+                    document.getElementById('compareModal').style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize the page with brand cards
+        generateBrandCards();
 
         // Form submission handling
         document.getElementById('customerForm').addEventListener('submit', function(e) {
@@ -1738,38 +1861,49 @@ document.querySelector(".close-compare").onclick = ()=>{
                 return;
             }
             
+            // Get selected car from session storage
+            const selectedCar = JSON.parse(sessionStorage.getItem('selectedCar'));
+            if (!selectedCar) {
+                alert('No car selected for purchase. Please select a car first.');
+                return;
+            }
+            
+            // Prepare email content
+            const subject = encodeURIComponent(`New Car Purchase Request - ${fullName}`);
+            const body = encodeURIComponent(
+                `Customer Information:\n` +
+                `Full Name: ${fullName}\n` +
+                `Location: ${location}\n` +
+                `Contact 1: ${contact1}\n` +
+                `Contact 2: ${document.getElementById('contact2').value || 'Not provided'}\n` +
+                `Email: ${document.getElementById('email').value || 'Not provided'}\n` +
+                `Address: ${address}\n` +
+                `NIN: ${nin}\n\n` +
+                `Selected Car Details:\n` +
+                `Brand: ${selectedCar.brand}\n` +
+                `Model: ${selectedCar.model}\n` +
+                `Color: ${selectedCar.color}\n` +
+                `Price: ₦${selectedCar.price.toLocaleString()}\n\n` +
+                `Delivery Method: ${deliveryMethod}\n` +
+                `Additional Information: ${document.getElementById('additionalInfo').value || 'None'}\n\n` +
+                `Please contact the customer to provide payment methods and complete the purchase.`
+            );
+            
+            // Create mailto link
+            const mailtoLink = `mailto:info@roadmaxautos.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
             // Show success message
-            alert('Thank you! Your information has been submitted successfully. We will contact you shortly to finalize your purchase.');
+            alert('Your information has been submitted successfully! An email has been prepared for our sales team. Please check your email client to send the request.');
             
             // Reset form
             this.reset();
         });
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Login functionality would be implemented in a real application.');
-            modal.style.display = 'none';
-        });
-
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Account created successfully! You can now log in.');
-            modal.style.display = 'none';
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        // Initialize modal functionality
+        initModalFunctionality();
     </script>
 </body>
 </html>
